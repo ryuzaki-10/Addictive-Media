@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+       
+        <title>
+            Listing Page
+        </title>
+    </head>    
+    <body>
+        <div>
+            <h2> Sort by</h2>
+            
+        <form method="post" action="/namesort">
+            <input type="submit" value="name">
+        </form>
+        <form method="post" action="/datesort">
+            <input type="submit" value="date">
+        </form>
+    </div>
+        <div></div>
+        <table>
+            <tr>
+               
+            <th>Name</th>
+            <th>Date</th>
+            <th>Country</th>
+            <th>File</th>
+            <th>Delete</th>
+            <th>Download</th>
+        </tr>
+        <% for (let i=0;i<data.length;i++) { %>
+        <tr>
+            
+          <td><%= data[i].NAME %></td>
+        <td><%= data[i].CREATEDATE %></td>
+        <td><%= data[i].COUNTRY %></td>
+        <td><%= data[i].FILES %></td>
+        <td>
+            <form method="post" action="/delete">
+                <button name="id" value="<%= data[i].ID%>" onchange="this.form.submit()">Delete</button>
+            </form>
+        </td>
+        <td>
+            <form method="post" action="/download">
+                <button name="id" value="<%= data[i].ID%>" onchange="this.form.submit()">Download</button>
+            </form>
+        </td>
+    </tr>
+    <% }%>
+    </table>
+    </div>
+        
+   
+     </body>
+ </html>
